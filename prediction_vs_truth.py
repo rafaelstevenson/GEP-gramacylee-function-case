@@ -134,14 +134,14 @@ def EvaluateET(chromosome, variable_dict, const_list):
 
 
 # load dataset to get ground truth
-df = pd.read_excel('../testing_datasets/forrester.xls')
+df = pd.read_excel('../testing_datasets/gramacylee.xls')
 y_true = df['output']
-x = df['input1']
+x = df[['input1','input2']]
 
 # declare the chromosome and the variable dictionary
-chromosome = ['*', '(X2)', '(sin)', '*', '-', '+', '(X2)', '(X2)', '*', '-', '(X2)', '?', '(sin)', '?', 'a', 'a', 'a', 'a', '?', '?', 'a', 'a', 'a', 'a', 'a', '?', '?', '0', '9', '3', '4', '7', '5', '3', '10', '4', '2', '4', '3', '3', '4']
-term_set = ['a']
-const_list = [1.9907733343148943, 11.454457419645728, 10.220522956304762, 2.5186616881399333, 2.678209163314668, 10.394952859605853, 6.198823321013686, 8.37558978215862, 10.600249168174287, 7.502779881454574, 2.6961058577195915, 5.254872366367976, 6.875852467120374, 1.0653453543681537]
+chromosome =  ['*', 'a', '(exp)', '-', 'a', '-', '(exp)', 'b', '(X2)', '*', '+', '*', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'b', '5', '6', '0', '0', '1', '4', '1', '0', '11', '12', '1', '1', '10', '5']
+term_set = ['a','b']
+const_list = [9.085438328853577, 12.541568931269392, 14.228939030815598, 1.7243040260042173, 9.927060931656424, 13.910065740856533, 11.923836084853418, 12.466478431804356, 10.316798354700671, 11.526828984322051, 9.37978289606355, 3.3828761393003153, 13.466390125971392, 1.095020280549908]
 
 y_true = df['output']
 
@@ -162,13 +162,25 @@ y_pred = np.array(y_pred)
 print(f'Prediction Mean Squared Error (MSE): {mean_squared_error(y_true, y_pred)}')
 print(f'Prediction R-squared Score (R2): {r2_score(y_true, y_pred)}')
 
-plt.plot(x, y_pred, label='Prediction', ls='--',color='k')
 #plt.scatter(x, y_pred ,label='Prediction')
 #plt.scatter(x, y_true, label='Ground Truth')
-plt.plot(x,y_true,label='Ground Truth',color='r')
+plt.scatter(x['input1'],y_true, label='true')
+plt.scatter(x['input1'],y_pred, label='pred')
+#plt.imshow(x,y_true)
 plt.title('Prediction vs Ground Truth')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.xlabel('a')
+plt.ylabel('b')
 plt.legend()
-plt.savefig('Prediction vs Ground Truth.png')
+#plt.savefig('Prediction vs Ground Truth.png')
+plt.show()
+
+
+plt.scatter(x['input2'],y_true, label='true')
+plt.scatter(x['input2'],y_pred, label='pred')
+#plt.imshow(x,y_true)
+plt.title('Prediction vs Ground Truth')
+plt.xlabel('a')
+plt.ylabel('b')
+plt.legend()
+#plt.savefig('Prediction vs Ground Truth.png')
 plt.show()
