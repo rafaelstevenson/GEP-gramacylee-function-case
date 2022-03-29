@@ -202,3 +202,41 @@ print(f'Prediction R-squared Score (R2): {r2_score(y_true, y_pred)}')
 # plt.legend()
 # #plt.savefig('Prediction vs Ground Truth.png')
 # plt.show()
+
+
+# import matplotlib.pyplot as plt
+# from matplotlib.ticker import MaxNLocator
+# from matplotlib import cm
+#
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# surf = ax.plot_trisurf(x['input1'], x['input2'], y_true, cmap=cm.jet, linewidth=0)
+# fig.colorbar(surf)
+# ax.xaxis.set_major_locator(MaxNLocator(5))
+# ax.yaxis.set_major_locator(MaxNLocator(6))
+# ax.zaxis.set_major_locator(MaxNLocator(5))
+# fig.tight_layout()
+# plt.show()
+
+ax = plt.axes(projection='3d')
+ax.plot_trisurf(x['input1'], x['input2'], y_true,cmap='seismic', edgecolor='None')
+plt.savefig('Ground Truth.png')
+plt.show()
+bx = plt.axes(projection='3d')
+bx.plot_trisurf(x['input1'], x['input2'], y_pred,cmap='seismic', edgecolor='None')
+plt.savefig('Prediction.png')
+plt.show()
+cx = plt.axes(projection='3d')
+cx.plot_trisurf(x['input1'], x['input2'], abs(y_pred-y_true),cmap='seismic', edgecolor='None')
+plt.savefig('error.png')
+plt.show()
+
+plt.tricontourf(x['input1'],x['input2'],y_true, cmap='jet',levels=100)
+plt.colorbar()
+plt.show()
+plt.tricontourf(x['input1'],x['input2'],y_pred, cmap='jet',levels=100)
+plt.colorbar()
+plt.show()
+plt.tricontourf(x['input1'],x['input2'],abs(y_true-y_pred), cmap='jet',levels=100)
+plt.colorbar()
+plt.show()
