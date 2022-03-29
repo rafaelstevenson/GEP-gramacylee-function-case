@@ -162,25 +162,43 @@ y_pred = np.array(y_pred)
 print(f'Prediction Mean Squared Error (MSE): {mean_squared_error(y_true, y_pred)}')
 print(f'Prediction R-squared Score (R2): {r2_score(y_true, y_pred)}')
 
-#plt.scatter(x, y_pred ,label='Prediction')
-#plt.scatter(x, y_true, label='Ground Truth')
-plt.scatter(x['input1'],y_true, label='true')
-plt.scatter(x['input1'],y_pred, label='pred')
-#plt.imshow(x,y_true)
-plt.title('Prediction vs Ground Truth')
-plt.xlabel('a')
-plt.ylabel('b')
-plt.legend()
-#plt.savefig('Prediction vs Ground Truth.png')
-plt.show()
+
+# # plt.imshow(x,y_true)
+# import plotly.graph_objects as go
+# import numpy as np
+#
+# fig1 = go.Figure(data=[go.Scatter3d(x=x['input1'], y=x['input2'], z=y_true,
+#                                    mode='markers')])
+# fig2 = go.Figure(data=[go.Scatter3d(x=x['input1'], y=x['input2'], z=y_pred,
+#                                    mode='markers')])
+# fig3 = go.Figure(data=fig1.data + fig2.data)
+# fig3.show()
+#
+# fig4 = go.Figure(data=[go.Scatter3d(x=x['input1'], y=x['input2'], z=abs(y_pred-y_true),
+#                                    mode='markers')])
+# fig4.show()
 
 
-plt.scatter(x['input2'],y_true, label='true')
-plt.scatter(x['input2'],y_pred, label='pred')
-#plt.imshow(x,y_true)
-plt.title('Prediction vs Ground Truth')
-plt.xlabel('a')
-plt.ylabel('b')
-plt.legend()
-#plt.savefig('Prediction vs Ground Truth.png')
-plt.show()
+
+# #plt.scatter(x, y_pred ,label='Prediction')
+# #plt.scatter(x, y_true, label='Ground Truth')
+# plt.scatter(x['input1'],y_true, label='true')
+# plt.scatter(x['input1'],y_pred, label='pred')
+# #plt.imshow(x,y_true)
+# plt.title('Prediction vs Ground Truth')
+# plt.xlabel('a')
+# plt.ylabel('b')
+# plt.legend()
+# #plt.savefig('Prediction vs Ground Truth.png')
+# plt.show()
+#
+#
+# plt.scatter(x['input2'],y_true, label='true')
+# plt.scatter(x['input2'],y_pred, label='pred')
+# #plt.imshow(x,y_true)
+# plt.title('Prediction vs Ground Truth')
+# plt.xlabel('a')
+# plt.ylabel('b')
+# plt.legend()
+# #plt.savefig('Prediction vs Ground Truth.png')
+# plt.show()
