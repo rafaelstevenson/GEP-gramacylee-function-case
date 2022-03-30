@@ -139,7 +139,7 @@ y_true = df['output']
 x = df[['input1','input2']]
 
 # declare the chromosome and the variable dictionary
-chromosome =  ['*', 'a', '(exp)', '-', 'a', '-', '(exp)', 'b', '(X2)', '*', '+', '*', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'b', '5', '6', '0', '0', '1', '4', '1', '0', '11', '12', '1', '1', '10', '5']
+chromosome = ['/', 'a', '+', '(exp)', '(exp)', '*', '(X2)', 'b', 'b', 'a', 'a', 'b', '/', 'a', 'b', 'a', 'a', 'b', 'b', 'a', 'b', 'b', 'b', 'a', 'b', 'b', 'a', '4', '8', '4', '1', '5', '0', '13', '9', '13', '1', '11', '6', '4', '10']
 term_set = ['a','b']
 const_list = [9.085438328853577, 12.541568931269392, 14.228939030815598, 1.7243040260042173, 9.927060931656424, 13.910065740856533, 11.923836084853418, 12.466478431804356, 10.316798354700671, 11.526828984322051, 9.37978289606355, 3.3828761393003153, 13.466390125971392, 1.095020280549908]
 
@@ -220,23 +220,39 @@ print(f'Prediction R-squared Score (R2): {r2_score(y_true, y_pred)}')
 
 ax = plt.axes(projection='3d')
 ax.plot_trisurf(x['input1'], x['input2'], y_true,cmap='seismic', edgecolor='None')
+plt.title('Ground Truth')
 plt.savefig('Ground Truth.png')
 plt.show()
 bx = plt.axes(projection='3d')
 bx.plot_trisurf(x['input1'], x['input2'], y_pred,cmap='seismic', edgecolor='None')
+plt.title('Prediction')
 plt.savefig('Prediction.png')
 plt.show()
 cx = plt.axes(projection='3d')
 cx.plot_trisurf(x['input1'], x['input2'], abs(y_pred-y_true),cmap='seismic', edgecolor='None')
+plt.title('Mean Absolute Error')
 plt.savefig('error.png')
 plt.show()
 
 plt.tricontourf(x['input1'],x['input2'],y_true, cmap='jet',levels=100)
+plt.title('Ground Truth')
 plt.colorbar()
 plt.show()
 plt.tricontourf(x['input1'],x['input2'],y_pred, cmap='jet',levels=100)
+plt.title('Prediction')
 plt.colorbar()
 plt.show()
 plt.tricontourf(x['input1'],x['input2'],abs(y_true-y_pred), cmap='jet',levels=100)
+plt.title('Mean Absolute Error')
+plt.colorbar()
+plt.show()
+
+plt.tricontour(x['input1'],x['input2'],y_true, cmap='jet',levels=100)
+plt.colorbar()
+plt.show()
+plt.tricontour(x['input1'],x['input2'],y_pred, cmap='jet',levels=100)
+plt.colorbar()
+plt.show()
+plt.tricontour(x['input1'],x['input2'],abs(y_true-y_pred), cmap='jet',levels=100)
 plt.colorbar()
 plt.show()
